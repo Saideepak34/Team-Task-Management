@@ -55,7 +55,13 @@ const AuthPage = ({ isLogin = true }) => {
       toast.success(`${isLogin ? 'Welcome back' : 'Account created'}!`);
       navigate('/dashboard');
     } catch (err) {
-      const message = err.response?.data?.message || 'An error occurred. Please try again.';
+      const apiMessage = err.response?.data?.message;
+      const validationErrors = err.response?.data?.errors;
+      const validationMessage = Array.isArray(validationErrors)
+        ? validationErrors[0]?.msg
+        : null;
+      const message =
+        apiMessage || validationMessage || 'An error occurred. Please try again.';
       setError(message);
       toast.error(message);
     } finally {
