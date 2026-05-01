@@ -17,9 +17,7 @@ connectDB();
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin: [
-    "https://protective-solace-production-17f1.up.railway.app/"
-  ],
+  origin: process.env.CORS_ORIGIN,
   credentials: true
 }));
 
