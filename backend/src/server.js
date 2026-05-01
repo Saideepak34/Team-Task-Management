@@ -16,12 +16,13 @@ connectDB();
 
 // Middleware
 app.use(express.json());
-app.use(
-  cors({
-    origin: process.env.CORS_ORIGIN || 'protective-solace-production-17f1.up.railway.app',
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://protective-solace.up.railway.app"
+  ],
+  credentials: true
+}));
 
 // Routes
 app.use('/api/auth', authRoutes);
