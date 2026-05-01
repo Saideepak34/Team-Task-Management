@@ -18,8 +18,7 @@ connectDB();
 app.use(express.json());
 app.use(cors({
   origin: [
-    "http://localhost:5173",
-    "https://protective-solace.up.railway.app"
+    "team-task-management-production-cd98.up.railway.app"
   ],
   credentials: true
 }));
